@@ -32,14 +32,14 @@
                         @endif
                     </div>
                     <div class="col-md-3">
-                        @if (!Auth::check())
+                        @if (Auth::check())
+                            {{-- Display user profile stuff --}}
+                        @else
                             <ul class="nav navbar-nav right">
                                 <li>
                                     <a href="">Login</a>
                                 </li>
                             </ul>
-                        @else
-                            {{-- Display user profile stuff --}}
                         @endif
                     </div>
                 </div>
