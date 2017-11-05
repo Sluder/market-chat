@@ -12,6 +12,46 @@
   float: right;
 }
 
+.red {
+  color: $red;
+}
+
+.form-control {
+  &:focus {
+    border: none;
+  }
+}
+
+.primary-btn {
+  color: white;
+  background-color: $primary;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+  &:hover, &:focus, &:active {
+    color: white;
+    outline: none !important;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}
+
+.secondary-btn {
+  color: $primary;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+  &:hover, &:focus, &:active {
+    color: $primary;
+    outline: none !important;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}
+
 
 // ---------- Styles ----------
 .navbar {
@@ -42,4 +82,59 @@
 
 .content {
   margin-top: 50px;
+}
+
+.login {
+  .welcome-header {
+    color: $primary;
+    font-size: 65px;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  .welcome-helper {
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .user-buttons {
+    margin-top: 3%;
+
+    .register-btn {
+      float: right;
+      width: 120px;
+    }
+
+    .login-btn {
+      float: left;
+      width: 120px;
+    }
+  }
+  
+  .register-panel, .login-panel {
+    color: white;
+    background-color: $primary;
+    border-radius: 4px;
+    margin-top: 5%;
+    box-shadow: 0 3px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+    .panel-header {
+      font-size: 20px;
+      padding: 20px 0 0 20px;
+    }
+
+    form {
+      padding: 0 20px 20px;
+
+      label {
+        font-weight: normal;
+      }
+
+      button {
+        float: right;
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
 @extends('layouts.base')
 
+{{-- Page when not logged in --}}
 @section('content')
-    <p>not logged in</p>
+    <p>index</p>
 @endsection

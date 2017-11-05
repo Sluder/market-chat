@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 class PageController extends Controller
 {
     // Initial page
-    public function index()
+    public function showIndex()
     {
         if (Auth::check()) {
             return view('pages.home');
@@ -16,9 +16,15 @@ class PageController extends Controller
     }
 
     // User home
-    public function home()
+    public function showHome()
     {
         return view('pages.home');
+    }
+
+    // User registration & login
+    public function showLogin()
+    {
+        return view('pages.login');
     }
 
 }

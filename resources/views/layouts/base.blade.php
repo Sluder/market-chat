@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Market Chat</title>
+        <title>MarketChat</title>
 
         {{-- Styles --}}
         <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="{{ route('index') }}">Market Chat</a>
+                            <a href="{{ route('show.index') }}">MarketChat</a>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -37,7 +37,7 @@
                         @else
                             <ul class="nav navbar-nav right">
                                 <li>
-                                    <a href="">Login</a>
+                                    <a href="{{ route('show.login') }}">Login</a>
                                 </li>
                             </ul>
                         @endif
@@ -48,9 +48,7 @@
 
         {{-- Page content --}}
         <div class="content">
-            <div class="container">
-                @yield('content')
-            </div>
+            @yield('content')
         </div>
 
         {{-- Scripts --}}
