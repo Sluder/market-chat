@@ -32,7 +32,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Name <span class="red">*</span></label>
-                                        {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => 50, 'required' => 'required', 'placeholder' => 'Name']) }}
+                                        {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => 50, 'required' => 'required', 'placeholder' => 'Name', 'autofocus'=>'autofocus']) }}
                                     </div>
                                     @if ($errors->first('name'))
                                         <p class="red">{{ $errors->first('name') }}</p>
@@ -89,7 +89,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="login">Username / Email <span class="red">*</span></label>
-                                        {{ Form::text('login', null, ['class' => 'form-control', 'maxlength' => 50, 'required' => 'required', 'placeholder' => 'Username']) }}
+                                        {{ Form::text('login', null, ['class' => 'form-control test', 'maxlength' => 50, 'required' => 'required', 'placeholder' => 'Username', 'autofocus'=>'autofocus']) }}
                                     </div>
                                 </div>
                                 <div class="col-md-6">

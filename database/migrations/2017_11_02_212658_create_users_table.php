@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->dateTime('username_last_changed');
             $table->string('email', 50);
             $table->string('password', 64)->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
