@@ -3,7 +3,7 @@
 {{-- User logged in --}}
 @section('content')
     <div class="home">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 @include('partials.left-sidebar')
 

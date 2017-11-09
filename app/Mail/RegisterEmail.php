@@ -23,11 +23,9 @@ class RegisterEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        \Log::info('New user registered. Sending email ..');
-
         return $this->view('pages.email.register-email')
-            ->subject('Welcome to ' . env('APP_NAME') . '!')
-            ->from(env('EMAIL_FROM'), env('APP_NAME'));
+                    ->subject('Welcome to ' . env('APP_NAME') . '!')
+                    ->from(env('MAIL_FROM'), env('APP_NAME'));
     }
 
 }
