@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegistrationRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,8 @@ class RegistrationRequest extends FormRequest
             'name' => 'required|max:50',
             'username' => 'required|max:30',
             'email' => 'required|email|max:50',
-            'password' => 'required|max:200'
+            'website' => 'nullable|max:50',
+            'Bio' => 'nullable|max:200'
         ];
     }
 
@@ -42,12 +43,15 @@ class RegistrationRequest extends FormRequest
             'name.required' => 'Please enter your name.',
             'username.required' => 'Please enter your username.',
             'email.required' => 'Please enter your email.',
-            'password.required' => 'Please enter a password.',
+
             'name.max' => 'Your name is too long.',
             'username.max'  => 'Please choose a shorter username.',
             'email.max'  => 'Your email is too long.',
+            'website.max'  => 'Your website link is too long.',
+            'bio.max'  => 'Your bio is too long.',
+
             'email.email' => 'Please enter a valid email.',
-            'password.max'  => 'Your password is too long.'
+            'website.url' => 'Please enter a valid website link.',
         ];
     }
 

@@ -13,5 +13,5 @@ class User extends Model implements Authenticatable
     public $timestamps = true;
 
     protected $table = 'users';
-    protected $fillable = ['name', 'username', 'username_last_changed', 'email', 'password'];
+    protected $fillable = ['name', 'username', 'username_last_changed', 'email', 'password', 'bio', 'website'];
 }
