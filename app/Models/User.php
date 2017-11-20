@@ -14,4 +14,11 @@ class User extends Model implements Authenticatable
 
     protected $table = 'users';
     protected $fillable = ['name', 'username', 'username_last_changed', 'email', 'password', 'bio', 'website'];
+
+    // Gets users watchlist
+    public function watchlist()
+    { dd($this->hasMany(Watchlist::class)->get());
+        return $this->hasMany(Symbol::class)->get();
+    }
+
 }

@@ -8,7 +8,7 @@
             </tr>
         </thead>
         <tbody>
-        @for ($i = 0; $i < 10; $i++)
+        @forelse (Auth::user()->watchlist as $item)
             <tr data-href="#" class="clickable {{ $i % 3 == 0 ? 'green-background' : 'red-background' }}">
                 <td>
                     <div class="row">
@@ -26,7 +26,8 @@
                     </div>
                 </td>
             </tr>
-        @endfor
+        @empty
+        @endforelse
         </tbody>
     </table>
 
