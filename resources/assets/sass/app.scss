@@ -44,10 +44,11 @@ label {
 .form-control {
   background: none !important;
   border: none !important;
-  border-bottom: 1px solid white !important;
+  border-bottom: 1px solid $accent !important;
   box-shadow: none !important;
   color: $text !important;
   resize: vertical;
+  border-radius: 0;
 
   &:focus {
     box-shadow: none !important;
@@ -79,7 +80,7 @@ label {
 
 // -------------------- Styles --------------------
 html, body {
-  background-color: $secondary;
+  background-color: $dark;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -128,6 +129,14 @@ html, body {
       border-collapse: separate;
       border-spacing: 0 2px;
       margin-bottom: 15px;
+
+      .empty {
+        text-align: center;
+
+        td {
+          padding: 10px;
+        }
+      }
 
       th, td {
         color: $text;
@@ -247,7 +256,6 @@ html, body {
 // ---------- Profile ----------
 .profile {
   .header {
-    background-color: $grey;
     color: $text;
     padding: 10px;
     border-radius: 2px;
@@ -261,9 +269,10 @@ html, body {
 
   .profile-panel {
     margin-bottom: 15px;
+    background-color: $grey;
+    border-radius: 2px;
 
     .profile-panel-content {
-      background-color: $grey;
       padding: 15px;
     }
 

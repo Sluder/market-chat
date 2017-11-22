@@ -25,13 +25,13 @@ class AccountController extends Controller
             return redirect()->back()->withInput()->withErrors(['username' => 'This username is already in use']);
         }
 
-        $user = User::create([
+        $user = User::create(array(
             'name' => $request->get('name'),
             'username' => $request->get('username'),
             'username_last_changed' => date("Y-m-d H:i:s"),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password'))
-        ]);
+        ));
 
         Mail::to($user->email)->send(new RegisterEmail);
 

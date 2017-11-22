@@ -17,8 +17,8 @@ class User extends Model implements Authenticatable
 
     // Gets users watchlist
     public function watchlist()
-    { dd($this->hasMany(Watchlist::class)->get());
-        return $this->hasMany(Symbol::class)->get();
+    {
+        return $this->belongsToMany(Symbol::class, 'watchlists', 'user_id', 'symbol_id');
     }
 
 }
