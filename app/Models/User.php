@@ -15,7 +15,11 @@ class User extends Model implements Authenticatable
     protected $table = 'users';
     protected $fillable = ['name', 'username', 'username_last_changed', 'email', 'password', 'bio', 'website'];
 
-    // Gets users watchlist
+    /**
+     * Gets symbols user is watching
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function watchlist()
     {
         return $this->belongsToMany(Symbol::class, 'watchlists', 'user_id', 'symbol_id');

@@ -6,7 +6,12 @@ use App\Models\Symbol;
 
 class MarketController extends Controller
 {
-    // Shows page for market symbol
+    /**
+     * View for symbol chat
+     *
+     * @param $ticker
+     * @return chat page for symbol w/ $ticker
+     */
     public function showSymbol($ticker)
     {
         $symbol = Symbol::whereTicker($ticker)->first();
@@ -15,7 +20,7 @@ class MarketController extends Controller
             return view('pages.symbol', compact('symbol'));
         }
 
-        // throw 404 symbol not found
+        // todo: throw 404 symbol not found
     }
 
 }

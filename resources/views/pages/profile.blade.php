@@ -1,6 +1,5 @@
 @extends('layouts.base')
 
-{{-- User profile --}}
 @section('content')
     <div class="profile">
         <div class="container-fluid">
@@ -9,11 +8,11 @@
 
                 <div class="col-md-6 center-content">
                     {{-- Profile information --}}
-                    <div class="profile-panel">
-                        <div class="header">
-                            <p class="profile-header">Profile</p>
+                    <div class="panel-group">
+                        <div class="panel-header">
+                            <p>Profile</p>
                         </div>
-                        <div class="profile-panel-content">
+                        <div class="panel-content">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="profile-img-holder">
@@ -41,13 +40,13 @@
                         </div>
                     </div>
 
+                    {{-- Information updating --}}
                     @if ($user->id === Auth::id())
-                        {{-- User updating --}}
-                        <div class="profile-panel">
-                            <div class="header">
-                                <p class="profile-header">Update Profile</p>
+                        <div class="panel-group">
+                            <div class="panel-header">
+                                <p>Update Profile</p>
                             </div>
-                            <div class="profile-panel-content">
+                            <div class="panel-content">
                                 @if (session()->has('profile_message'))
                                     <div class="alert green-background green">
                                         {{ session()->get('profile_message') }}
@@ -56,13 +55,13 @@
                                 <form action="{{ route('user.update', ['user' => $user]) }}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 {{ !$errors->first('name') ?: 'error' }}">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 {{ Form::text('name', $user->name, ['class' => 'form-control', 'maxlength' => 50, 'required' => 'required']) }}
                                             </div>
                                             @if ($errors->first('name'))
-                                                <p class="red">{{ $errors->first('name') }}</p>
+                                                <p>{{ $errors->first('name') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
@@ -72,7 +71,7 @@
                                             </div>
                                         </div>
                                         @if ($errors->first('username'))
-                                            <p class="red">{{ $errors->first('username') }}</p>
+                                            <p>{{ $errors->first('username') }}</p>
                                         @endif
                                     </div>
                                     <div class="row">
@@ -82,7 +81,7 @@
                                                 {{ Form::text('email', $user->email, ['class' => 'form-control', 'maxlength' => 50, 'required' => 'required']) }}
                                             </div>
                                             @if ($errors->first('email'))
-                                                <p class="red">{{ $errors->first('email') }}</p>
+                                                <p>{{ $errors->first('email') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
@@ -91,18 +90,18 @@
                                                 {{ Form::text('website', $user->website, ['class' => 'form-control', 'maxlength' => 50]) }}
                                             </div>
                                             @if ($errors->first('website'))
-                                                <p class="red">{{ $errors->first('website') }}</p>
+                                                <p>{{ $errors->first('website') }}</p>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="bio">Bio</label>
-                                                {{ Form::textarea('bio', $user->bio, ['class' => 'form-control', 'maxlength' => 200, 'rows' => 2]) }}
+                                                <label for="bio">Short Description</label>
+                                                {{ Form::textarea('bio', $user->bio, ['class' => 'form-control', 'maxlength' => 200, 'rows' => 1, "onkeyup"=>"autoGrow(this)"]) }}
                                             </div>
                                             @if ($errors->first('bio'))
-                                                <p class="red">{{ $errors->first('bio') }}</p>
+                                                <p>{{ $errors->first('bio') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -116,11 +115,11 @@
                         </div>
 
                         {{-- User password updating --}}
-                        <div class="profile-panel">
-                            <div class="header">
-                                <p class="profile-header">Update Password</p>
+                        <div class="panel-group">
+                            <div class="panel-header">
+                                <p>Update Password</p>
                             </div>
-                            <div class="profile-panel-content">
+                            <div class="panel-content">
                                 @if (session()->has('password_message'))
                                     <div class="alert green-background green">
                                         {{ session()->get('password_message') }}
@@ -135,7 +134,7 @@
                                                 {{ Form::password('current_password', ['class' => 'form-control', 'required' => 'required']) }}
                                             </div>
                                             @if ($errors->first('password'))
-                                                <p class="red">{{ $errors->first('password') }}</p>
+                                                <p>{{ $errors->first('password') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-6">

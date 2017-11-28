@@ -12,17 +12,22 @@ use Illuminate\Support\Facades\Mail;
 
 class AccountController extends Controller
 {
-    // New user registration
+    /**
+     * New user registration
+     *
+     * @param UserRequest $request
+     * @return back to user home
+     */
     public function register(UserRequest $request)
     {
         Input::merge(array_map('trim', Input::all()));
 
         // Check is email & username are not in use
         if ($this->userExists($request->get('email'))->getData()) {
-            return redirect()->back()->withInput()->withErrors(['email' => 'This email is already in use']);
+            return redirect()->back()->withInput()->withErrors(['email' => 'Error: This email is already in use']);
 
         } else if ($this->userExists($request->get('username'))->getData()) {
-            return redirect()->back()->withInput()->withErrors(['username' => 'This username is already in use']);
+            return redirect()->back()->withInput()->withErrors(['username' => 'Error: This username is already in use']);
         }
 
         $user = User::create(array(
@@ -40,16 +45,28 @@ class AccountController extends Controller
         return redirect()->route('show.home');
     }
 
-    // Checks if user already exists with email or username
+    /**
+     * Checks if user already exists with email or username
+     *
+     * @param $data : Data to check
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function userExists($data)
     {
         return response()->json(User::where('username', 'LIKE', '%' . $data . '%')->orWhere('email', $data)->exists());
     }
 
-    // Update user information
+    /**
+     * Update user information
+     *
+     * @param User $user : Existing user
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateProfile(User $user, UserRequest $request)
     {
-        //check if username different
+        // todo: check if user is allowed to change username
+
         $user->update([
             'name' => $request->get('name'),
             'username' => $request->get('username'),
@@ -62,7 +79,12 @@ class AccountController extends Controller
         return redirect()->back()->with(['profile_message' => 'Your profile was successfully updated.']);
     }
 
-    // Update user password
+    /**
+     * Update user password
+     *
+     * @param User $user : Existing user
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function updatePassword(User $user)
     {
         if (request('current_password') && request('new_password')) {
@@ -73,11 +95,11 @@ class AccountController extends Controller
                 return redirect()->back()->with(['password_message' => 'Your password was successfully updated.']);
 
             } else {
-                return redirect()->back()->withInput()->withErrors(['password' => 'Your current password is incorrect.']);
+                return redirect()->back()->withInput()->withErrors(['password' => 'Error: Your current password is incorrect.']);
             }
         }
 
-        return redirect()->back()->withInput()->withErrors(['password' => 'Your current and new passwords are required.']);
+        return redirect()->back()->withInput()->withErrors(['password' => 'Error: Your current and new passwords are required.']);
     }
 
 }

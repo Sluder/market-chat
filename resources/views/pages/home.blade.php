@@ -5,7 +5,7 @@
     <div class="home">
         <div class="container-fluid">
             <div class="row">
-                @include('partials.left-sidebar')
+                {{--@include('partials.left-sidebar')--}}
 
                 {{-- Latest articles --}}
                 <div class="col-md-6 article-list">

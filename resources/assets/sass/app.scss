@@ -17,16 +17,16 @@
   color: $red !important;
 }
 
+.green {
+  color: $green !important;
+}
+
 .red-background {
   background-color: rgba(255, 74, 104, 0.1);
 
   &:hover {
     background-color: rgba(255, 74, 104, 0.3) !important;
   }
-}
-
-.green {
-  color: $green !important;
 }
 
 .green-background {
@@ -37,22 +37,40 @@
   }
 }
 
-label {
-  color: $text;
-}
+.form-group {
+  label {
+    color: white;
+    font-size: 13px;
+    font-weight: normal;
+    opacity: 0.65;
+  }
 
-.form-control {
-  background: none !important;
-  border: none !important;
-  border-bottom: 1px solid $accent !important;
-  box-shadow: none !important;
-  color: $text !important;
-  resize: vertical;
-  border-radius: 0;
+  .active {
+    color: $accent;
+  }
 
-  &:focus {
-    box-shadow: none !important;
+  .form-control {
+    color: white;
+    background: none !important;
+    border: none !important;
+    border-radius: 0;
     border-bottom: 1px solid white !important;
+    box-shadow: none !important;
+    opacity: 0.65;
+    overflow: hidden;
+    height: 34px;
+    resize: none;
+
+    &:focus {
+      box-shadow: none !important;
+      border-bottom: 2px solid $accent !important;
+      opacity: 1.00;
+    }
+
+    &:hover {
+      border-bottom: 2px solid white;
+      opacity: 1.00;
+    }
   }
 }
 
@@ -61,21 +79,45 @@ label {
 }
 
 .accent-button {
-  color: white;
+  color: $dark-grey;
   background-color: $accent;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 13px;
 
   &:hover, &:focus, &:active {
-    color: white;
+    color: $dark-grey;
     outline: none !important;
   }
 
+  &:active {
+    opacity: 0.7;
+  }
+
   &:hover {
-    box-shadow: 0 3px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22);
+    -webkit-box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
+    -moz-box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
+    box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
   }
 }
 
 .alert {
   padding: 9px;
+}
+
+.error {
+  label, p {
+    color: $red;
+    font-size: 13px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+
+    .form-control {
+      border-bottom-color: $red !important;
+    }
+  }
 }
 
 // -------------------- Styles --------------------
@@ -85,7 +127,10 @@ html, body {
 }
 
 .navbar {
-  background-color: $grey;
+  background-color: $dark-grey;
+  -webkit-box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
+  -moz-box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
+  box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
 
   .logo {
     line-height: 50px;
@@ -99,12 +144,11 @@ html, body {
     a {
       text-align: center;
       color: white;
-      height: 48px;
+      height: 50px;
 
       &:hover {
-        height: 45px;
         background: none;
-        border-bottom: 3px solid white;
+        border-bottom: 2px solid white;
       }
     }
   }
@@ -121,7 +165,7 @@ html, body {
     margin-top: -2px;
 
     .header {
-      color: $text;
+      color: white;
       font-size: 15px;
     }
 
@@ -139,7 +183,7 @@ html, body {
       }
 
       th, td {
-        color: $text;
+        color: white;
         border: none;
         border-radius: 2px;
         max-width: 177px;
@@ -165,7 +209,7 @@ html, body {
         }
 
         .company-name {
-          color: $light-grey;
+          color: $grey;
           font-size: 11px;
         }
 
@@ -198,142 +242,110 @@ html, body {
   }
 }
 
-.login {
-  .welcome-header {
-    color: $grey;
-    font-size: 65px;
-    text-align: center;
-    margin-top: 5%;
-    margin-bottom: 0;
-    font-weight: bold;
-  }
+.panel-group {
+  margin-bottom: 15px;
+  background-color: $dark-grey;
+  border-radius: 2px;
 
-  .welcome-helper {
-    text-align: center;
-    font-size: 25px;
-  }
-
-  .user-buttons {
-    margin-top: 3%;
-
-    .register-btn {
-      float: right;
-      width: 120px;
-    }
-
-    .login-btn {
-      float: left;
-      width: 120px;
-    }
-  }
-  
-  .register-panel, .login-panel {
+  .panel-header {
     color: white;
-    background-color: $grey;
-    border-radius: 4px;
-    margin-top: 5%;
-    box-shadow: 0 3px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-    .panel-header {
-      font-size: 20px;
-      padding: 20px 0 0 20px;
-    }
-
-    form {
-      padding: 0 20px 20px;
-
-      label {
-        font-weight: normal;
-      }
-
-      button {
-        float: right;
-      }
-    }
-  }
-}
-
-// ---------- Profile ----------
-.profile {
-  .header {
-    color: $text;
-    padding: 10px;
-    border-radius: 2px;
-    margin-bottom: 1px;
-
-    .profile-header {
-      margin: 0;
-      text-transform: uppercase;
-    }
-  }
-
-  .profile-panel {
-    margin-bottom: 15px;
-    background-color: $grey;
-    border-radius: 2px;
-
-    .profile-panel-content {
-      padding: 15px;
-    }
-
-    .profile-img-holder {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      position: relative;
-      overflow: hidden;
-
-      img {
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-      }
-    }
 
     p {
-      color: $text;
+      color: $accent;
+      margin: 0;
+      padding: 20px 20px 0;
     }
+  }
 
-    .username {
-      font-size: 25px;
-    }
-
-    .name {
-      color: $light-grey;
-    }
-
-    .bio {
-      margin-top: 25px;
-      font-size: 13px;
-    }
-
-    .information {
-      font-size: 15px;
-      margin-top: 5px;
-
-      i {
-        margin-right: 5px;
-      }
-
-      .website a {
-        color: $accent;
-        text-decoration: none;
-      }
-    }
-
+  .panel-content {
+    padding: 20px;
+    
     button {
       float: right;
     }
   }
 }
+
+// ---------- Profile ----------
+//.profile {
+//  .header {
+//    color: white;
+//    padding: 10px;
+//    border-radius: 2px;
+//    margin-bottom: 1px;
+//
+//    .profile-header {
+//      margin: 0;
+//    }
+//  }
+//
+//  .profile-panel {
+//    margin-bottom: 15px;
+//    background-color: $dark-grey;
+//    border-radius: 2px;
+//
+//    .profile-panel-content {
+//      padding: 15px;
+//    }
+//
+//    .profile-img-holder {
+//      width: 150px;
+//      height: 150px;
+//      border-radius: 50%;
+//      position: relative;
+//      overflow: hidden;
+//
+//      img {
+//        min-width: 100%;
+//        min-height: 100%;
+//        width: auto;
+//        height: auto;
+//        position: absolute;
+//        left: 50%;
+//        top: 50%;
+//        -webkit-transform: translate(-50%, -50%);
+//        -moz-transform: translate(-50%, -50%);
+//        -ms-transform: translate(-50%, -50%);
+//        transform: translate(-50%, -50%);
+//      }
+//    }
+//
+//    p {
+//      color: white;
+//    }
+//
+//    .username {
+//      font-size: 25px;
+//    }
+//
+//    .name {
+//      color: $grey;
+//    }
+//
+//    .bio {
+//      margin-top: 25px;
+//      font-size: 13px;
+//    }
+//
+//    .information {
+//      font-size: 15px;
+//      margin-top: 5px;
+//
+//      i {
+//        margin-right: 5px;
+//      }
+//
+//      .website a {
+//        color: $accent;
+//        text-decoration: none;
+//      }
+//    }
+//
+//    button {
+//      float: right;
+//    }
+//  }
+//}
 
 // ---------- Home ----------
 .home {

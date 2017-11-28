@@ -12,12 +12,12 @@ class RegisterEmail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Create a new message instance
      */
     public function __construct() {}
 
     /**
-     * Build the message.
+     * Build the email
      *
      * @return $this
      */

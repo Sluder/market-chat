@@ -19,19 +19,24 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="{{ route('show.index') }}">MarketChat</a>
+                            <a href="{{ route('show.index') }}">Website</a>
                         </div>
                     </div>
                     <div class="col-md-6">
+                        {{-- Logged in, display links --}}
                         @if (Auth::check())
                             <ul class="nav navbar-nav">
                                 <li>
                                     <a href="#">Link</a>
                                 </li>
+                                <li>
+                                    <a href="#">Link2</a>
+                                </li>
                             </ul>
                         @endif
                     </div>
                     <div class="col-md-3">
+                        {{-- Logged in, display profile --}}
                         @if (Auth::check())
                             {{-- Display user profile stuff --}}
                         @else
@@ -53,6 +58,20 @@
 
         {{-- Scripts --}}
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
+        <script type="text/javascript">
+            $('.form-control').focus(function(){
+                $(this).prev().addClass('active');
+            }).blur(function(){
+                $(this).prev().removeClass('active');
+            });
+
+            // Auto heightens element to fix text
+            function autoGrow(element) {
+                element.style.height = "5px";
+                element.style.height = (element.scrollHeight) + "px";
+            }
+        </script>
 
         @yield('scripts')
     </body>

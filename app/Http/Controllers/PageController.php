@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    // Initial page
+    /**
+     * View initial welcome page
+     */
     public function showIndex()
     {
         if (Auth::check()) {
@@ -16,19 +18,28 @@ class PageController extends Controller
         return view('pages.index');
     }
 
-    // User home
+    /**
+     * View for user home
+     */
     public function showHome()
     {
         return view('pages.home');
     }
 
-    // User registration & login
+    /**
+     * View for user registration & login
+     */
     public function showLogin()
     {
         return view('pages.login');
     }
 
-    // Show profile of user
+    /**
+     * View for user profile
+     *
+     * @param $username
+     * @return user with username profile
+     */
     public function profile($username)
     {
         $user = User::whereUsername($username)->first();
