@@ -40,18 +40,18 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Error: Your name is required.',
-            'username.required' => 'Error: A username is required.',
-            'email.required' => 'Error: Your email is required.',
+            'name.required' => 'Error: Your name is required',
+            'username.required' => 'Error: A username is required',
+            'email.required' => 'Error: Your email is required',
 
-            'name.max' => 'Error: Your name is too long.',
-            'username.max'  => 'Error: Your username is too long.',
-            'email.max'  => 'Error: Your email is too long.',
-            'website.max'  => 'Error: Your website link is too long.',
-            'bio.max'  => 'Error: Your bio is too long.',
+            'name.max' => 'Error: Your name is too long',
+            'username.max'  => 'Error: Your username is too long',
+            'email.max'  => 'Error: Your email is too long',
+            'website.max'  => 'Error: Your website link is too long',
+            'bio.max'  => 'Error: Your bio is too long',
 
-            'email.email' => 'Error: Enter a valid email.',
-            'website.url' => 'Error: Enter a valid website link.',
+            'email.email' => 'Error: Enter a valid email',
+            'website.url' => 'Error: Enter a valid website link',
         ];
     }
 

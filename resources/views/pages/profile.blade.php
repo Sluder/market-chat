@@ -183,7 +183,7 @@
 
                                                 </div>
                                             @empty
-                                                <p class="empty">This user isn't following anyone.</p>
+                                                <p class="empty">This user isn't following anyone</p>
                                             @endforelse
                                         </div>
                                     </div>
@@ -194,7 +194,7 @@
 
                                                 </div>
                                             @empty
-                                                <p class="empty">This user has no followers.</p>
+                                                <p class="empty">This user has no followers</p>
                                             @endforelse
                                         </div>
                                     </div>
@@ -219,7 +219,7 @@
 
             if ($new_pass !== $new_pass_confirm) {
                 $('#new_password_group').addClass('error');
-                $('#new_password_group p').html('Passwords do not match.');
+                $('#new_password_group p').html('Error: Passwords do not match.');
                 $('#new_password_btn').prop('disabled', true);
             } else {
                 $('#new_password_group').removeClass('error');
