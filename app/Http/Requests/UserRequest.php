@@ -28,7 +28,7 @@ class UserRequest extends FormRequest
             'username' => 'required|max:30',
             'email' => 'required|email|max:50',
             'website' => 'nullable|max:50',
-            'Bio' => 'nullable|max:200'
+            'bio' => 'nullable|max:200'
         ];
     }
 
@@ -40,18 +40,18 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Please enter your name.',
-            'username.required' => 'Please enter your username.',
-            'email.required' => 'Please enter your email.',
+            'name.required' => 'Error: Your name is required.',
+            'username.required' => 'Error: A username is required.',
+            'email.required' => 'Error: Your email is required.',
 
-            'name.max' => 'Your name is too long.',
-            'username.max'  => 'Please choose a shorter username.',
-            'email.max'  => 'Your email is too long.',
-            'website.max'  => 'Your website link is too long.',
-            'bio.max'  => 'Your bio is too long.',
+            'name.max' => 'Error: Your name is too long.',
+            'username.max'  => 'Error: Your username is too long.',
+            'email.max'  => 'Error: Your email is too long.',
+            'website.max'  => 'Error: Your website link is too long.',
+            'bio.max'  => 'Error: Your bio is too long.',
 
-            'email.email' => 'Please enter a valid email.',
-            'website.url' => 'Please enter a valid website link.',
+            'email.email' => 'Error: Enter a valid email.',
+            'website.url' => 'Error: Enter a valid website link.',
         ];
     }
 

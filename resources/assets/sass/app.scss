@@ -1,6 +1,6 @@
 
 // -------------------- Imports --------------------
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 
 @import "variables";
 
@@ -42,7 +42,6 @@
     color: white;
     font-size: 13px;
     font-weight: normal;
-    opacity: 0.65;
   }
 
   .active {
@@ -78,15 +77,16 @@
   cursor: pointer;
 }
 
-.accent-button {
-  color: $dark-grey;
+.btn {
+  color: white;
   background-color: $accent;
   border-radius: 2px;
   font-weight: bold;
   font-size: 13px;
+  width: 80px;
 
   &:hover, &:focus, &:active {
-    color: $dark-grey;
+    color: white;
     outline: none !important;
   }
 
@@ -99,7 +99,12 @@
     -moz-box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
     box-shadow: 0 9px 12px -6px rgba(0,0,0,0.48);
   }
+
+  &:disabled {
+    opacity: 0.25;
+  }
 }
+
 
 .alert {
   padding: 9px;
@@ -107,10 +112,14 @@
 
 .error {
   label, p {
-    color: $red;
+    color: $red !important;
     font-size: 13px;
   }
-  
+
+  p {
+    margin-top: -5px;
+  }
+
   .form-group {
     margin-bottom: 10px;
 
@@ -123,7 +132,7 @@
 // -------------------- Styles --------------------
 html, body {
   background-color: $dark;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .navbar {
@@ -146,9 +155,13 @@ html, body {
       color: white;
       height: 50px;
 
-      &:hover {
+      &:hover, &:focus {
         background: none;
         border-bottom: 2px solid white;
+      }
+
+      &:active {
+        border-bottom: 2px solid $accent;
       }
     }
   }
@@ -161,6 +174,7 @@ html, body {
     padding: 0;
   }
 
+  // -------------------- Left sidebar
   .left-sidebar {
     margin-top: -2px;
 
@@ -252,6 +266,7 @@ html, body {
 
     p {
       color: $accent;
+      font-size: 16px;
       margin: 0;
       padding: 20px 20px 0;
     }
@@ -264,92 +279,35 @@ html, body {
       float: right;
     }
   }
-}
 
-// ---------- Profile ----------
-//.profile {
-//  .header {
-//    color: white;
-//    padding: 10px;
-//    border-radius: 2px;
-//    margin-bottom: 1px;
-//
-//    .profile-header {
-//      margin: 0;
-//    }
-//  }
-//
-//  .profile-panel {
-//    margin-bottom: 15px;
-//    background-color: $dark-grey;
-//    border-radius: 2px;
-//
-//    .profile-panel-content {
-//      padding: 15px;
-//    }
-//
-//    .profile-img-holder {
-//      width: 150px;
-//      height: 150px;
-//      border-radius: 50%;
-//      position: relative;
-//      overflow: hidden;
-//
-//      img {
-//        min-width: 100%;
-//        min-height: 100%;
-//        width: auto;
-//        height: auto;
-//        position: absolute;
-//        left: 50%;
-//        top: 50%;
-//        -webkit-transform: translate(-50%, -50%);
-//        -moz-transform: translate(-50%, -50%);
-//        -ms-transform: translate(-50%, -50%);
-//        transform: translate(-50%, -50%);
-//      }
-//    }
-//
-//    p {
-//      color: white;
-//    }
-//
-//    .username {
-//      font-size: 25px;
-//    }
-//
-//    .name {
-//      color: $grey;
-//    }
-//
-//    .bio {
-//      margin-top: 25px;
-//      font-size: 13px;
-//    }
-//
-//    .information {
-//      font-size: 15px;
-//      margin-top: 5px;
-//
-//      i {
-//        margin-right: 5px;
-//      }
-//
-//      .website a {
-//        color: $accent;
-//        text-decoration: none;
-//      }
-//    }
-//
-//    button {
-//      float: right;
-//    }
-//  }
-//}
+  .nav-tabs {
+    border-bottom: 1px solid $grey;
 
-// ---------- Home ----------
-.home {
-  .article-list {
+    li {
+      margin-bottom: 0;
 
+      &:hover {
+        border-bottom: 2px solid $accent;
+      }
+
+      a {
+        color: white !important;
+        background: none !important;
+        border: none !important;
+      }
+    }
+
+    .active {
+      border-bottom: 2px solid $accent;
+      margin-bottom: -1px;
+    }
+  }
+
+  .tab-pane {
+    .empty {
+      color: $grey;
+      text-align: center;
+      margin: 15px 0 0;
+    }
   }
 }

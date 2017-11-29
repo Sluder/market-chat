@@ -25,4 +25,20 @@ class User extends Model implements Authenticatable
         return $this->belongsToMany(Symbol::class, 'watchlists', 'user_id', 'symbol_id');
     }
 
+    /**
+     * Gets everyone that is following this user
+     */
+    public function followers()
+    {
+        return $this->belongsToMany('App\Models\User', 'followers', 'follow_id', 'user_id');
+    }
+
+    /**
+     * Gets everyone this user is following
+     */
+    public function following()
+    {
+        return $this->belongsToMany('App\Models\User', 'followers', 'user_id', 'follow_id');
+    }
+
 }

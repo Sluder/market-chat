@@ -95,11 +95,11 @@ class AccountController extends Controller
                 return redirect()->back()->with(['password_message' => 'Your password was successfully updated.']);
 
             } else {
-                return redirect()->back()->withInput()->withErrors(['password' => 'Error: Your current password is incorrect.']);
+                return redirect()->back()->withInput()->withErrors(['password' => 'Your current password is incorrect.']);
             }
         }
 
-        return redirect()->back()->withInput()->withErrors(['password' => 'Error: Your current and new passwords are required.']);
+        return redirect()->back()->withErrors(['password' => 'Your current and new password are required.']);
     }
 
 }

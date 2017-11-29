@@ -24,8 +24,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'login' => 'required|max:50',
-            'password' => 'required|max:200'
+            'login' => 'required|max:50'
         ];
     }
 
@@ -37,10 +36,9 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'login.required' => 'Please enter your username or email.',
-            'login.max' => 'Your username or email is too long.',
-            'password.required' => 'Please enter your password.',
-            'password.max' => 'Your password is too long.',
+            'login.required' => 'Error: Your username or email is required.',
+            'password.required' => 'Error: Your password is required.',
+            'login.max' => 'Error: Your username or email is too long.'
         ];
     }
 
