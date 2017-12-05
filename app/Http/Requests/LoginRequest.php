@@ -36,9 +36,9 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'login.required' => 'Error: Your username or email is required',
-            'password.required' => 'Error: Your password is required',
-            'login.max' => 'Error: Your username or email is too long'
+            'login.required' => 'Your username or email is required',
+            'password.required' => 'Your password is required',
+            'login.max' => 'Your username or email is too long'
         ];
     }
 

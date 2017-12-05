@@ -219,7 +219,7 @@
 
             if ($new_pass !== $new_pass_confirm) {
                 $('#new_password_group').addClass('error');
-                $('#new_password_group p').html('Error: Passwords do not match.');
+                $('#new_password_group p').html('Error: Passwords do not match');
                 $('#new_password_btn').prop('disabled', true);
             } else {
                 $('#new_password_group').removeClass('error');
