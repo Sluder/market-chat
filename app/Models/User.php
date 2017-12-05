@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 
+/**
+ * @property mixed username_last_changed
+ * @property mixed password
+ */
 class User extends Model implements Authenticatable
 {
     use AuthenticatableTrait;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Mail\RegisterEmail;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
@@ -65,8 +66,9 @@ class AccountController extends Controller
      */
     public function updateProfile(User $user, UserRequest $request)
     {
-        // todo: check if user is allowed to change username
-
+        if (Carbon::parse($user->username_last_changed)->addDays(30) > Carbon::now()) {
+            // user cant change username
+        }
         $user->update([
             'name' => $request->get('name'),
             'username' => $request->get('username'),
@@ -76,7 +78,7 @@ class AccountController extends Controller
             'website' => $request->get('website')
         ]);
 
-        return redirect()->back()->with(['profile_message' => 'Your profile was successfully updated.']);
+        return redirect()->back()->with(['profile_message' => 'Your profile was successfully updated']);
     }
 
     /**
@@ -92,14 +94,14 @@ class AccountController extends Controller
                 $user->update([
                     'password' => Hash::make(request('new_password'))
                 ]);
-                return redirect()->back()->with(['password_message' => 'Your password was successfully updated.']);
+                return redirect()->back()->with(['password_message' => 'Your password was successfully updated']);
 
             } else {
-                return redirect()->back()->withInput()->withErrors(['password' => 'Your current password is incorrect.']);
+                return redirect()->back()->withInput()->withErrors(['password' => 'Your current password is incorrect']);
             }
         }
 
-        return redirect()->back()->withErrors(['password' => 'Your current and new password are required.']);
+        return redirect()->back()->withErrors(['password' => 'Your current and new password are required']);
     }
 
 }

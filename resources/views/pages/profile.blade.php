@@ -211,7 +211,19 @@
 @endsection
 
 @section('scripts')
+    @parent
+
     <script type="text/javascript">
+        window.onload = function () {
+            autoGrow(document.getElementsByName("bio")[0]);
+        };
+
+        // Auto heightens element to fix text
+        function autoGrow(element) {
+            element.style.height = "5px";
+            element.style.height = (element.scrollHeight + 2) + "px";
+        }
+
         // Change password confirmation
         function confirmPassword() {
             var $new_pass = $("[name='new_password']").val();
@@ -219,7 +231,7 @@
 
             if ($new_pass !== $new_pass_confirm) {
                 $('#new_password_group').addClass('error');
-                $('#new_password_group p').html('Error: Passwords do not match');
+                $('#new_password_group p').html('Passwords do not match');
                 $('#new_password_btn').prop('disabled', true);
             } else {
                 $('#new_password_group').removeClass('error');

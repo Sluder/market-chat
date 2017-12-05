@@ -58,7 +58,6 @@
 
         {{-- Scripts --}}
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-
         <script type="text/javascript">
             $('.form-control').focus(function() {
                 if ($(this).parents(".error").length === 0) {
@@ -67,12 +66,6 @@
             }).blur(function() {
                 $(this).prev().removeClass('active');
             });
-
-            // Auto heightens element to fix text
-            function autoGrow(element) {
-                element.style.height = "5px";
-                element.style.height = (element.scrollHeight + 2) + "px";
-            }
         </script>
 
         @yield('scripts')
