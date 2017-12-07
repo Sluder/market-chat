@@ -8,9 +8,6 @@ class MarketController extends Controller
 {
     /**
      * View for symbol chat
-     *
-     * @param $ticker
-     * @return chat page for symbol w/ $ticker
      */
     public function showSymbol($ticker)
     {

@@ -15,9 +15,6 @@ class AccountController extends Controller
 {
     /**
      * New user registration
-     *
-     * @param UserRequest $request
-     * @return back to user home
      */
     public function register(UserRequest $request)
     {
@@ -48,9 +45,6 @@ class AccountController extends Controller
 
     /**
      * Checks if user already exists with email or username
-     *
-     * @param $data : Data to check
-     * @return \Illuminate\Http\JsonResponse
      */
     public function userExists($data)
     {
@@ -59,10 +53,6 @@ class AccountController extends Controller
 
     /**
      * Update user information
-     *
-     * @param User $user : Existing user
-     * @param UserRequest $request
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function updateProfile(User $user, UserRequest $request)
     {
@@ -83,9 +73,6 @@ class AccountController extends Controller
 
     /**
      * Update user password
-     *
-     * @param User $user : Existing user
-     * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function updatePassword(User $user)
     {

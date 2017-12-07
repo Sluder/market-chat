@@ -1,41 +1,33 @@
 
 <div class="col-md-3 left-sidebar">
-    {{-- Market watchlist --}}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Watchlist</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="panel-group">
+        <div class="panel-header">
+            <p>Watchlist</p>
+        </div>
+        <div class="panel-content sidebar">
             @forelse (Auth::user()->watchlist as $i => $item)
-                <tr data-href="#" class="clickable {{ $i % 3 == 0 ? 'green-background' : 'red-background' }}">
-                    <td>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="symbol">{{ $item->ticker }}</p>
-                                <p class="company-name">{{ $item->company_name }}</p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="current-price">$2.96</p>
-                            </div>
-                            <div class="col-md-3 {{ $i % 3 == 0 ? 'green' : 'red' }}">
-                                <p class="movement">$0.23 <i class="fa fa-angle-up" aria-hidden="true"></i></p>
-                                <p class="movement-percent">5.23 %</p>
-                            </div>
+                <a href="#">
+                    <div class="row sidebar-row {{ $i % 3 == 0 ? 'green-background' : 'red-background' }}">
+                        <div class="col-md-6">
+                            <p class="symbol">{{ $item->ticker }}</p>
+                            <p class="company-name">{{ $item->company_name }}</p>
                         </div>
-                    </td>
-                </tr>
+                        <div class="col-md-3">
+                            <p class="current-price">$2.96</p>
+                        </div>
+                        <div class="col-md-3 {{ $i % 3 == 0 ? 'green' : 'red' }}">
+                            <p class="movement">$0.23 <i class="fa fa-angle-up" aria-hidden="true"></i></p>
+                            <p class="movement-percent">5.23 %</p>
+                        </div>
+                    </div>
+                </a>
             @empty
-                <tr class="empty">
-                    <td>
-                        <p>You are not watching any symbols</p>
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
 
+            @endforelse
+        </div>
+    </div>
+
+<!--
     {{-- Joined rooms --}}
     <table class="table">
         <thead>
@@ -50,5 +42,5 @@
             </tr>
         @endfor
         </tbody>
-    </table>
+    </table> -->
 </div>

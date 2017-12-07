@@ -36,9 +36,6 @@ class PageController extends Controller
 
     /**
      * View for user profile
-     *
-     * @param $username
-     * @return user with username profile
      */
     public function profile($username)
     {

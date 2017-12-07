@@ -168,95 +168,6 @@ html, body {
   }
 }
 
-.content {
-  margin-top: 65px;
-
-  .center-content {
-    padding: 0;
-  }
-
-  // -------------------- Left sidebar
-  .left-sidebar {
-    margin-top: -2px;
-
-    .header {
-      color: white;
-      font-size: 15px;
-    }
-
-    .table {
-      border-collapse: separate;
-      border-spacing: 0 2px;
-      margin-bottom: 15px;
-
-      .empty {
-        text-align: center;
-
-        td {
-          padding: 10px;
-        }
-      }
-
-      th, td {
-        color: white;
-        border: none;
-        border-radius: 2px;
-        max-width: 177px;
-      }
-
-      th {
-        background-color: $grey;
-        text-transform: uppercase;
-        padding: 10px;
-        font-weight: normal;
-      }
-
-      td {
-        padding: 3px 12px;
-
-        .row {
-          margin-bottom: -3px;
-          margin-top: -3px;
-        }
-
-        .ticker {
-          font-size: 15px;
-        }
-
-        .company-name {
-          color: $grey;
-          font-size: 11px;
-        }
-
-        .current-price {
-          line-height: 2.5;
-          float: right;
-        }
-
-        .movement, .movement-percent {
-          font-size: 13px;
-          float: right;
-        }
-      }
-
-      .room-item {
-        padding: 8px;
-      }
-
-      p {
-        margin: 0;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-
-        i {
-          font-size: 15px;
-        }
-      }
-    }
-  }
-}
-
 .panel-group {
   margin-bottom: 15px;
   background-color: $dark-grey;
@@ -274,10 +185,25 @@ html, body {
   }
 
   .panel-content {
-    padding: 20px;
-    
+    padding: 10px 20px 20px;
+
     button {
       float: right;
+    }
+  }
+
+  .sidebar {
+    padding: 20px 0 0;
+
+    .sidebar-row {
+      border-radius: 2px;
+      border-top: 1px solid $dark-grey;
+      margin: 0;
+      padding: 5px 5px;
+
+      p {
+        margin: 0;
+      }
     }
   }
 
@@ -309,6 +235,35 @@ html, body {
       color: $grey;
       text-align: center;
       margin: 15px 0 0;
+    }
+  }
+}
+
+.content {
+  margin-top: 65px;
+
+  .center-content {
+    padding: 0;
+  }
+
+  .left-sidebar {
+    .symbol {
+      color: white;
+      margin-bottom: 3px !important;
+    }
+
+    .company-name {
+      color: $grey;
+      font-size: 11px;
+    }
+
+    .current-price {
+      color: white;
+      line-height: 40px;
+    }
+    
+    .movement, .movement-percent {
+      float: right;
     }
   }
 }
