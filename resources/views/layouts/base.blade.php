@@ -38,7 +38,7 @@
                     <div class="col-md-3">
                         {{-- Logged in, display profile --}}
                         @if (Auth::check())
-                            {{-- Display user profile stuff --}}
+                            {{-- TODO: Display user profile stuff --}}
                         @else
                             <ul class="nav navbar-nav right">
                                 <li>

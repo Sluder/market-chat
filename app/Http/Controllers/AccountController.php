@@ -54,8 +54,10 @@ class AccountController extends Controller
     /**
      * Update user information
      */
-    public function updateProfile(User $user, UserRequest $request)
+    public function updateProfile(UserRequest $request)
     {
+        $user = User::find(Auth::id());
+
         if (Carbon::parse($user->username_last_changed)->addDays(30) > Carbon::now()) {
             // user cant change username
         }
@@ -74,8 +76,10 @@ class AccountController extends Controller
     /**
      * Update user password
      */
-    public function updatePassword(User $user)
+    public function updatePassword()
     {
+        $user = User::find(Auth::id());
+
         if (request('current_password') && request('new_password')) {
             if (Hash::check(request('current_password'), $user->password)) {
                 $user->update([

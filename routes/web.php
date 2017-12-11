@@ -13,8 +13,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
     // Profile
     Route::get('/profile/{username}', 'PageController@profile')->name('show.profile');
-    Route::post('/profile/{user}/update', 'AccountController@updateProfile')->name('user.update');
-    Route::post('/profile/{user}/update/password', 'AccountController@updatePassword')->name('user.update.password');
+    Route::post('/profile/update', 'AccountController@updateProfile')->name('user.update');
+    Route::post('/profile/update/password', 'AccountController@updatePassword')->name('user.update.password');
 
     // Markets
     Route::get('/symbol/{ticker}', 'MarketController@showSymbol')->name('show.symbol');

@@ -6,7 +6,7 @@
             <div class="row">
                 @include('partials.left-sidebar')
 
-                <div class="col-md-6 center-content">
+                <div class="col-md-6 col-md-offset-3 center-content">
                     {{-- Display information --}}
                     <div class="panel-group">
                         <div class="panel-header">
@@ -52,7 +52,7 @@
                                         {{ session()->get('profile_message') }}
                                     </div>
                                 @endif
-                                <form action="{{ route('user.update', ['user' => $user]) }}" method="POST">
+                                <form action="{{ route('user.update') }}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-6 {{ $errors->first('name') ? 'error' : '' }}">
@@ -125,7 +125,7 @@
                                         {{ session()->get('password_message') }}
                                     </div>
                                 @endif
-                                <form action="{{ route('user.update.password', ['user' => $user]) }}" method="POST">
+                                <form action="{{ route('user.update.password') }}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-12 {{ $errors->first('password') ? 'error' : '' }}">
@@ -161,47 +161,51 @@
                                 </form>
                             </div>
                         </div>
-                    @else
-                        <div class="panel-group">
-                            <div class="panel-header">
-                                <p>Latest</p>
-                            </div>
-                            <div class="panel-content">
-                                <ul class="nav nav-tabs">
-                                    <li class="active">
-                                        <a href="#following" data-toggle="tab">Following</a>
-                                    </li>
-                                    <li>
-                                        <a href="#followers" data-toggle="tab">Followers</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="following">
-                                        <div class="row">
-                                            @forelse ($user->following as $user_following)
-                                                <div class="col-md-6">
+                    @endif
 
-                                                </div>
-                                            @empty
-                                                <p class="empty">This user isn't following anyone</p>
-                                            @endforelse
-                                        </div>
+                    <div class="panel-group">
+                        <div class="panel-header">
+                            <p>Details</p>
+                        </div>
+                        <div class="panel-content">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#following" data-toggle="tab">Following</a>
+                                </li>
+                                <li>
+                                    <a href="#followers" data-toggle="tab">Followers</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="following">
+                                    <div class="row">
+                                        @forelse ($user->following as $user_following)
+                                            <div class="col-md-6">
+
+                                            </div>
+                                        @empty
+                                            <div class="col-md-12">
+                                                <p class="empty">{{ $user->id === Auth::id() ? 'You are not ' : 'This user isn\'t ' }} following anyone</p>
+                                            </div>
+                                        @endforelse
                                     </div>
-                                    <div class="tab-pane" id="followers">
-                                        <div class="row">
-                                            @forelse ($user->followers as $follower)
-                                                <div class="col-md-6">
+                                </div>
+                                <div class="tab-pane" id="followers">
+                                    <div class="row">
+                                        @forelse ($user->followers as $follower)
+                                            <div class="col-md-6">
 
-                                                </div>
-                                            @empty
-                                                <p class="empty">This user has no followers</p>
-                                            @endforelse
-                                        </div>
+                                            </div>
+                                        @empty
+                                            <div class="col-md-12">
+                                                <p class="empty">{{ $user->id === Auth::id() ? 'You don\'t have any ' : 'This user does\'t have any ' }} followers</p>
+                                            </div>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    </div>
                 </div>
 
                 @include('partials.right-sidebar')
@@ -215,7 +219,9 @@
 
     <script type="text/javascript">
         window.onload = function () {
-            autoGrow(document.getElementsByName("bio")[0]);
+            if (document.getElementsByName("bio")[0]) {
+                autoGrow(document.getElementsByName("bio")[0]);
+            }
         };
 
         // Auto heightens element to fix text

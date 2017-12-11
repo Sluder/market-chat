@@ -73,15 +73,10 @@
   }
 }
 
-.clickable {
-  cursor: pointer;
-}
-
 .btn {
   color: white;
   background-color: $accent;
   border-radius: 2px;
-  font-weight: bold;
   font-size: 13px;
   width: 80px;
 
@@ -127,6 +122,11 @@
       border-bottom-color: $red !important;
     }
   }
+}
+
+.empty {
+  color: $grey;
+  text-align: center;
 }
 
 // -------------------- Styles --------------------
@@ -193,7 +193,7 @@ html, body {
   }
 
   .sidebar {
-    padding: 20px 0 0;
+    padding: 10px 0 0;
 
     .sidebar-row {
       border-radius: 2px;
@@ -211,8 +211,6 @@ html, body {
     border-bottom: 1px solid $grey;
 
     li {
-      margin-bottom: 0;
-
       &:hover {
         border-bottom: 2px solid $accent;
       }
@@ -232,8 +230,6 @@ html, body {
 
   .tab-pane {
     .empty {
-      color: $grey;
-      text-align: center;
       margin: 15px 0 0;
     }
   }
@@ -247,6 +243,9 @@ html, body {
   }
 
   .left-sidebar {
+    overflow: scroll;
+    height: 100%;
+
     .symbol {
       color: white;
       margin-bottom: 3px !important;
@@ -260,10 +259,19 @@ html, body {
     .current-price {
       color: white;
       line-height: 40px;
+      float: right;
     }
     
     .movement, .movement-percent {
       float: right;
     }
+
+    .empty {
+      margin-bottom: 10px !important;
+    }
+  }
+
+  .left-sidebar::-webkit-scrollbar {
+    display: none;
   }
 }

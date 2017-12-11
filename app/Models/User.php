@@ -21,8 +21,6 @@ class User extends Model implements Authenticatable
 
     /**
      * Gets symbols user is watching
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function watchlist()
     {
@@ -43,6 +41,15 @@ class User extends Model implements Authenticatable
     public function following()
     {
         return $this->belongsToMany('App\Models\User', 'followers', 'user_id', 'follow_id');
+    }
+
+    /**
+     * Gets all the rooms this user has joined
+     * TODO: CHANGE TO ROOMS
+     */
+    public function rooms()
+    {
+        return $this->belongsToMany('App\Models\User', 'followers', 'follow_id', 'user_id');
     }
 
 }
