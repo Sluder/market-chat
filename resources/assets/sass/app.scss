@@ -1,11 +1,10 @@
 
 // -------------------- Imports --------------------
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 
 @import "variables";
-
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "node_modules/font-awesome/scss/font-awesome.scss";
 
 
 // ------------------- Global --------------------
@@ -254,6 +253,8 @@ html, body {
     .company-name {
       color: $grey;
       font-size: 11px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .current-price {

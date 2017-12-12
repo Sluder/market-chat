@@ -41,7 +41,7 @@
                     </div>
 
                     {{-- Information updating --}}
-                    @if ($user->id === Auth::id())
+                    @if (Auth::id() === $user->id)
                         <div class="panel-group">
                             <div class="panel-header">
                                 <p>Update Profile</p>
@@ -61,7 +61,7 @@
                                                 {{ Form::text('name', $user->name, ['class' => 'form-control', 'maxlength' => 50, 'required' => 'required']) }}
                                             </div>
                                             @if ($errors->first('name'))
-                                                <p>{{ $errors->first('name') }}</p>
+                                                <p class="red">{{ $errors->first('name') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-6 {{ $errors->first('username') ? 'error' : '' }}">
@@ -69,10 +69,10 @@
                                                 <label for="username">Username</label>
                                                 {{ Form::text('username', $user->username, ['class' => 'form-control', 'maxlength' => 30, 'required' => 'required']) }}
                                             </div>
+                                            @if ($errors->first('username'))
+                                                <p class="red">{{ $errors->first('username') }}</p>
+                                            @endif
                                         </div>
-                                        @if ($errors->first('username'))
-                                            <p>{{ $errors->first('username') }}</p>
-                                        @endif
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 {{ $errors->first('email') ? 'error' : '' }}">
@@ -81,7 +81,7 @@
                                                 {{ Form::text('email', $user->email, ['class' => 'form-control', 'maxlength' => 50, 'required' => 'required']) }}
                                             </div>
                                             @if ($errors->first('email'))
-                                                <p>{{ $errors->first('email') }}</p>
+                                                <p class="red">{{ $errors->first('email') }}</p>
                                             @endif
                                         </div>
                                         <div class="col-md-6 {{ $errors->first('website') ? 'error' : '' }}">
@@ -90,7 +90,7 @@
                                                 {{ Form::text('website', $user->website, ['class' => 'form-control', 'maxlength' => 50, 'placeholder' => '']) }}
                                             </div>
                                             @if ($errors->first('website'))
-                                                <p>{{ $errors->first('website') }}</p>
+                                                <p class="red">{{ $errors->first('website') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                                 {{ Form::textarea('bio', $user->bio, ['class' => 'form-control', 'maxlength' => 200, 'rows' => 1, "onkeyup"=>"autoGrow(this)"]) }}
                                             </div>
                                             @if ($errors->first('bio'))
-                                                <p>{{ $errors->first('bio') }}</p>
+                                                <p class="red">{{ $errors->first('bio') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -134,7 +134,7 @@
                                                 {{ Form::password('current_password', ['class' => 'form-control', 'required' => 'required']) }}
                                             </div>
                                             @if ($errors->first('password'))
-                                                <p>{{ $errors->first('password') }}</p>
+                                                <p class="red">{{ $errors->first('password') }}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -170,14 +170,14 @@
                         <div class="panel-content">
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#following" data-toggle="tab">Following</a>
+                                    <a href="#following-tab" data-toggle="tab">Following</a>
                                 </li>
                                 <li>
-                                    <a href="#followers" data-toggle="tab">Followers</a>
+                                    <a href="#followers-tab" data-toggle="tab">Followers</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="following">
+                                <div class="tab-pane active" id="following-tab">
                                     <div class="row">
                                         @forelse ($user->following as $user_following)
                                             <div class="col-md-6">
@@ -190,7 +190,7 @@
                                         @endforelse
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="followers">
+                                <div class="tab-pane" id="followers-tab">
                                     <div class="row">
                                         @forelse ($user->followers as $follower)
                                             <div class="col-md-6">
@@ -219,8 +219,9 @@
 
     <script type="text/javascript">
         window.onload = function () {
-            if (document.getElementsByName("bio")[0]) {
-                autoGrow(document.getElementsByName("bio")[0]);
+            var bio_field = document.getElementsByName("bio")[0];
+            if (bio_field) {
+                autoGrow(bio_field);
             }
         };
 
@@ -245,5 +246,11 @@
                 $('#new_password_btn').prop('disabled', false);
             }
         }
+
+        @if (Auth::id() !== $user->id)
+            function follower() {
+                // TODO: ajax request
+            }
+        @endif
     </script>
 @endsection

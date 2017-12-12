@@ -22,10 +22,10 @@ class AccountController extends Controller
 
         // Check is email & username are not in use
         if ($this->userExists($request->get('email'))->getData()) {
-            return redirect()->back()->withInput()->withErrors(['email' => 'Error: This email is already in use']);
+            return redirect()->back()->withInput()->withErrors(['email' => 'This email is already in use']);
 
         } else if ($this->userExists($request->get('username'))->getData()) {
-            return redirect()->back()->withInput()->withErrors(['username' => 'Error: This username is already in use']);
+            return redirect()->back()->withInput()->withErrors(['username' => 'This username is already in use']);
         }
 
         $user = User::create(array(
@@ -44,23 +44,17 @@ class AccountController extends Controller
     }
 
     /**
-     * Checks if user already exists with email or username
-     */
-    public function userExists($data)
-    {
-        return response()->json(User::where('username', 'LIKE', '%' . $data . '%')->orWhere('email', $data)->exists());
-    }
-
-    /**
      * Update user information
      */
     public function updateProfile(UserRequest $request)
     {
         $user = User::find(Auth::id());
 
-        if (Carbon::parse($user->username_last_changed)->addDays(30) > Carbon::now()) {
-            // user cant change username
+        // Check if user tried changing their username inside the block period (30 days)
+        if ($request->get('username') !== $user->username && Carbon::parse($user->username_last_changed)->addDays(30) >= Carbon::now()) {
+            return redirect()->back()->withInput()->withErrors(['username' => 'You cant change your username just yet']);
         }
+
         $user->update([
             'name' => $request->get('name'),
             'username' => $request->get('username'),
@@ -93,6 +87,14 @@ class AccountController extends Controller
         }
 
         return redirect()->back()->withErrors(['password' => 'Your current and new password are required']);
+    }
+
+    /**
+     * Checks if user already exists with email or username
+     */
+    public function userExists($data)
+    {
+        return response()->json(User::where('username', 'LIKE', '%' . $data . '%')->orWhere('email', $data)->exists());
     }
 
 }

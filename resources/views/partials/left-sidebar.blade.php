@@ -17,6 +17,7 @@
                         </div>
                         <div class="col-md-4 {{ $i % 3 == 0 ? 'green' : 'red' }}">
                             <p class="movement">$0.23 <i class="fa fa-angle-up" aria-hidden="true"></i></p>
+                            <br>
                             <p class="movement-percent">5.23 %</p>
                         </div>
                     </div>

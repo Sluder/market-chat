@@ -45,6 +45,7 @@ class User extends Model implements Authenticatable
 
     /**
      * Gets all the rooms this user has joined
+     *
      * TODO: CHANGE TO ROOMS
      */
     public function rooms()
