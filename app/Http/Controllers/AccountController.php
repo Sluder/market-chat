@@ -8,7 +8,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 
 class AccountController extends Controller
@@ -18,8 +17,6 @@ class AccountController extends Controller
      */
     public function register(UserRequest $request)
     {
-        Input::merge(array_map('trim', Input::all()));
-
         // Check is email & username are not in use
         if ($this->userExists($request->get('email'))->getData()) {
             return redirect()->back()->withInput()->withErrors(['email' => 'This email is already in use']);
@@ -28,13 +25,13 @@ class AccountController extends Controller
             return redirect()->back()->withInput()->withErrors(['username' => 'This username is already in use']);
         }
 
-        $user = User::create(array(
+        $user = User::create([
             'name' => $request->get('name'),
             'username' => $request->get('username'),
             'username_last_changed' => date("Y-m-d H:i:s"),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password'))
-        ));
+        ]);
 
         Mail::to($user->email)->send(new RegisterEmail);
 
@@ -48,7 +45,7 @@ class AccountController extends Controller
      */
     public function updateProfile(UserRequest $request)
     {
-        $user = User::find(Auth::id());
+        $user = Auth::user();
 
         // Check if user tried changing their username inside the block period (30 days)
         if ($request->get('username') !== $user->username && Carbon::parse($user->username_last_changed)->addDays(30) >= Carbon::now()) {
@@ -72,7 +69,7 @@ class AccountController extends Controller
      */
     public function updatePassword()
     {
-        $user = User::find(Auth::id());
+        $user = Auth::user();
 
         if (request('current_password') && request('new_password')) {
             if (Hash::check(request('current_password'), $user->password)) {

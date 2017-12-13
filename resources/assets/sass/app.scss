@@ -245,6 +245,12 @@ html, body {
     overflow: scroll;
     height: 100%;
 
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .symbol {
       color: white;
       margin-bottom: 3px !important;
@@ -253,8 +259,6 @@ html, body {
     .company-name {
       color: $grey;
       font-size: 11px;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .current-price {

@@ -7,7 +7,6 @@
             <div class="row">
                 @include('partials.left-sidebar')
 
-                {{-- Latest articles --}}
                 <div class="col-md-6">
 
                 </div>

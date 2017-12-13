@@ -5,12 +5,12 @@
             <p>Watchlist</p>
         </div>
         <div class="panel-content sidebar">
-            @forelse (Auth::user()->watchlist as $i => $item)
+            @forelse (Auth::user()->watchlist as $i => $watchlist_item)
                 <a href="#">
                     <div class="row sidebar-row {{ $i % 3 == 0 ? 'green-background' : 'red-background' }}">
                         <div class="col-md-5">
-                            <p class="symbol">{{ $item->ticker }}</p>
-                            <p class="company-name">{{ $item->company_name }}</p>
+                            <p class="symbol">{{ $watchlist_item->ticker }}</p>
+                            <p class="company-name">{{ $watchlist_item->company_name }}</p>
                         </div>
                         <div class="col-md-3">
                             <p class="current-price">$2.96</p>
