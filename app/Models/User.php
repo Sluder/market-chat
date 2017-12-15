@@ -45,12 +45,10 @@ class User extends Model implements Authenticatable
 
     /**
      * Gets all the rooms this user has joined
-     *
-     * TODO: CHANGE TO ROOMS
      */
     public function rooms()
     {
-        return $this->belongsToMany('App\Models\User', 'followers', 'follow_id', 'user_id');
+        return $this->hasMany('App\Models\Room', 'creator_id');
     }
 
 }

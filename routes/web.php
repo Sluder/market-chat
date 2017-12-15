@@ -24,4 +24,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
     // Markets
     Route::get('/symbol/{ticker}', 'MarketController@showSymbol')->name('show.symbol');
+
+    // Rooms
+    Route::get('{room_uuid}', 'RoomController@showRoom')->name('show.room');
 });

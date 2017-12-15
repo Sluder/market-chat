@@ -52,13 +52,26 @@
         </div>
 
         {{-- Page content --}}
-        <div class="content">
+        <div class="content full-height">
             @yield('content')
         </div>
 
         {{-- Scripts --}}
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         <script type="text/javascript">
+            window.onload = function () {
+                var bio_field = document.getElementsByName("bio")[0];
+                if (bio_field) {
+                    autoGrow(bio_field);
+                }
+            };
+
+            // Auto heightens element to fix text
+            function autoGrow(element) {
+                element.style.height = "5px";
+                element.style.height = (element.scrollHeight + 2) + "px";
+            }
+
             $('.form-control').focus(function() {
                 if ($(this).parents(".error").length === 0) {
                     $(this).prev().addClass('active');

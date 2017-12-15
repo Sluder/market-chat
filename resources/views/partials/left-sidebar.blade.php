@@ -39,9 +39,14 @@
         </div>
         <div class="panel-content sidebar">
             @forelse (Auth::user()->rooms as $room)
-                <a href="#">
-                    <div class="row sidebar-row">
-
+                <a href="{{ route('show.room', ['room_uuid' => $room->uuid]) }}">
+                    <div class="row room-row sidebar-row">
+                        <div class="col-md-2">
+                            <img class="room-img" src="https://www.communitylandtrust.ca/wp-content/uploads/2015/10/placeholder.png">
+                        </div>
+                        <div class="col-md-10">
+                            <p class="room-name">{{ $room->name }}</p>
+                        </div>
                     </div>
                 </a>
             @empty

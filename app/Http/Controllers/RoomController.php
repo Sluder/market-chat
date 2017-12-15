@@ -9,9 +9,9 @@ class RoomController extends Controller
     /**
      * View for chat room
      */
-    public function showRoom($uuid)
+    public function showRoom($room_uuid)
     {
-        $room = Room::where('uuid', $uuid)->first();
+        $room = Room::where('uuid', $room_uuid)->first();
 
         if ($room) {
             return view('pages.rooms.room', compact('room'));

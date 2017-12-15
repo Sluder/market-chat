@@ -19,6 +19,8 @@ class CreateRoomsTable extends Migration
             $table->string('name', 50);
             $table->integer('creator_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('creator_id')->references('id')->on('users');
         });
     }
 
