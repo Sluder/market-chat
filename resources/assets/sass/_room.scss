@@ -1,0 +1,47 @@
+
+.room {
+  .room-panel {
+    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
+
+    .panel-header {
+      padding-bottom: 7px;
+    }
+
+    .messages {
+      height: calc(100vh - 210px);
+      min-height: calc(100vh - 210px);
+      margin-bottom: 15px;
+      overflow: hidden;
+      overflow-y: scroll;
+
+      .message {
+        margin-right: 10px;
+
+        img {
+          width: 30px;
+        }
+
+        .message-name {
+          color: $accent;
+          display: inline;
+          margin-left: 10px;
+        }
+
+        .message-time {
+          color: $grey;
+          font-size: 12px;
+          display: inline-block;
+          margin-left: 10px;
+        }
+
+        .message-content {
+          color: $grey;
+          font-size: 13px;
+          margin-left: 43px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

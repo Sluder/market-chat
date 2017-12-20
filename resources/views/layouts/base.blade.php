@@ -52,7 +52,7 @@
         </div>
 
         {{-- Page content --}}
-        <div class="content full-height">
+        <div class="content">
             @yield('content')
         </div>
 
