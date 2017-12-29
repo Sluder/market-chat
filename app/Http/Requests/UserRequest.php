@@ -24,7 +24,8 @@ class UserRequest extends FormRequest
             'username' => 'required|max:30',
             'email' => 'required|email|max:50',
             'website' => 'nullable|max:50',
-            'bio' => 'nullable|max:200'
+            'bio' => 'nullable|max:200',
+            'password' => 'sometimes|min:5',
         ];
     }
 
@@ -46,6 +47,8 @@ class UserRequest extends FormRequest
 
             'email.email' => 'Enter a valid email',
             'website.url' => 'Enter a valid website link',
+
+            'password.min' => 'Password must be at least 5 characters',
         ];
     }
 

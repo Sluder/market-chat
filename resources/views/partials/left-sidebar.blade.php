@@ -1,5 +1,5 @@
 
-<div class="col-md-3 left-sidebar affix">
+<div class="col-md-3 left-sidebar affix no-padding">
     <div class="panel-group">
         <div class="panel-header">
             <p>Watchlist</p>

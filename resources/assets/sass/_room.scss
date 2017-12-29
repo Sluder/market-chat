@@ -1,11 +1,12 @@
 
 .room {
   .room-panel {
+    border-right: 1px solid $dark;
     height: calc(100vh - 80px);
     min-height: calc(100vh - 80px);
 
     .panel-header {
-      padding-bottom: 7px;
+      padding-bottom: 11px;
     }
 
     .messages {

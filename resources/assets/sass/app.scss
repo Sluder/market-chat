@@ -9,8 +9,9 @@
 
 
 // ------------------- Global --------------------
-.right {
-  float: right;
+.no-padding {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .red {
@@ -50,10 +51,9 @@
 
   .form-control {
     color: white;
-    background: none !important;
+    background-color: $dark-grey-light;
     border: none !important;
-    border-radius: 0;
-    border-bottom: 1px solid white !important;
+    border-radius: 5px;
     box-shadow: none !important;
     opacity: 0.65;
     overflow: hidden;
@@ -76,7 +76,7 @@
 .btn {
   color: white;
   background-color: $accent;
-  border-radius: 2px;
+ 
   font-size: 13px;
   width: 80px;
 
@@ -111,7 +111,7 @@
       color: white;
 
       &:hover {
-        background-color: $dark-grey-hover;
+        background-color: $dark-grey-light;
       }
 
       &.leave {
@@ -227,24 +227,29 @@ html, body {
 }
 
 .panel-group {
-  margin-bottom: 15px;
   background-color: $dark-grey;
-  border-radius: 2px;
+  border-top: 1px solid $dark;
+  border-right: 1px solid $dark;
+  margin-bottom: 0;
 
   .panel-header {
     color: white;
-    padding: 20px 20px 0;
+    padding: 15px 20px 0;
 
     p {
       color: $accent;
       display: inline-block;
       font-size: 16px;
-      margin: 0;
+    }
+    
+    h6 {
+      color: $grey;
+      margin: -5px 0 0;
     }
   }
 
   .panel-content {
-    padding: 10px 20px 20px;
+    padding: 20px;
 
     button {
       float: right;
@@ -252,7 +257,7 @@ html, body {
   }
 
   .sidebar {
-    padding: 10px 0 0;
+    padding: 0;
 
     a {
       color: white;
@@ -263,8 +268,6 @@ html, body {
     }
 
     .sidebar-row {
-      border-radius: 2px;
-      border-top: 1px solid $dark-grey;
       margin: 0;
       padding: 5px 5px;
 
@@ -274,18 +277,16 @@ html, body {
     }
 
     .room-row {
-      border-top: 1px solid $dark;
-
       &:hover {
-        background-color: $dark-grey-hover;
+        background-color: $dark-grey-light;
       }
 
       .room-img {
-        width: 35px;
+        width: 40px;
       }
 
       .room-name {
-        line-height: 34px;
+        line-height: 40px;
       }
     }
   }
@@ -319,15 +320,20 @@ html, body {
 }
 
 .content {
-  margin-top: 55px;
+  margin-top: 49px;
 
   .center-content {
     padding: 0;
   }
 
   .left-sidebar {
+    border-right: 1px solid $dark;
     overflow: scroll;
     height: 100%;
+
+    .panel-group {
+      border-right: none;
+    }
 
     p {
       overflow: hidden;

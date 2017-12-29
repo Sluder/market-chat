@@ -48,7 +48,7 @@ class User extends Model implements Authenticatable
      */
     public function rooms()
     {
-        return $this->hasMany('App\Models\Room', 'creator_id');
+        return $this->belongsToMany(Room::class, 'room_joins', 'user_id', 'room_id');
     }
 
 }

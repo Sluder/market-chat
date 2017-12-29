@@ -45,6 +45,7 @@
                         <div class="panel-group">
                             <div class="panel-header">
                                 <p>Update Profile</p>
+                                <h6>Sensitive information is hidden from the public</h6>
                             </div>
                             <div class="panel-content">
                                 @if (session()->has('profile_message'))
@@ -118,6 +119,7 @@
                         <div class="panel-group">
                             <div class="panel-header">
                                 <p>Update Password</p>
+                                <h6>Password must be more than 5 characters</h6>
                             </div>
                             <div class="panel-content">
                                 @if (session()->has('password_message'))
