@@ -4,6 +4,7 @@
     <div class="profile">
         <div class="container-fluid">
             <div class="row">
+                {{-- .col-md-3 --}}
                 @include('partials.left-sidebar')
 
                 <div class="col-md-6 col-md-offset-3 center-content">
@@ -63,12 +64,13 @@
                                     <div class="tab-pane active" id="edit-tab">
                                         <div class="row">
                                             <div class="col-md-12">
+                                                {{-- Personal information --}}
+                                                <p class="subheader">Profile Info</p>
                                                 @if (session()->has('profile_message'))
                                                     <div class="alert green-background green">
                                                         {{ session()->get('profile_message') }}
                                                     </div>
                                                 @endif
-                                                {{-- Personal information --}}
                                                 <form action="{{ route('user.update') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <div class="row">
@@ -132,6 +134,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <p class="subheader">Information</p>
                                                 @if (session()->has('password_message'))
                                                     <div class="alert green-background green">
                                                         {{ session()->get('password_message') }}
@@ -208,6 +211,7 @@
                     </div>
                 </div>
 
+                {{-- .col-md-3 --}}
                 @include('partials.right-sidebar')
             </div>
         </div>

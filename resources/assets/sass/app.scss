@@ -4,6 +4,7 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
 @import "variables";
 @import "room";
 
@@ -49,7 +50,7 @@
   }
 
   .form-control {
-    color: white;
+    color: $grey;
     background: none !important;
     border: none !important;
     border-radius: 0;
@@ -61,6 +62,8 @@
     resize: none;
 
     &:focus {
+      color: white;
+      border-bottom: 2px solid $accent !important;
       box-shadow: none !important;
       opacity: 1.00;
     }
@@ -351,7 +354,8 @@ html, body {
     }
 
     .empty {
-      margin-bottom: 10px !important;
+      margin-top: 5px !important;
+      margin-bottom: 5px !important;
     }
   }
 
@@ -375,4 +379,10 @@ html, body {
       margin-bottom: 0;
     }
   }
+}
+
+.subheader {
+  color: $accent;
+  font-size: 14px;
+  text-transform: uppercase;
 }

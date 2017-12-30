@@ -43,7 +43,7 @@
                                     <div class="message">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <img src="https://www.communitylandtrust.ca/wp-content/uploads/2015/10/placeholder.png">
+                                                <img src="{{ url('/images/test1.jpg') }}">
                                                 <p class="message-name">{{ $i % 2 === 0 ? "Zachary Sluder" : "Rusty" }}</p>
                                                 <p class="message-time">11:06 PM</p>
                                             </div>
