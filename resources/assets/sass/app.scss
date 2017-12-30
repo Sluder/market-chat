@@ -22,18 +22,18 @@
 }
 
 .red-background {
-  background-color: rgba(255, 74, 104, 0.1);
+  background-color: rgba(220, 60, 90, 0.1);
 
   &:hover {
-    background-color: rgba(255, 74, 104, 0.3) !important;
+    background-color: rgba(220, 60, 90, 0.3) !important;
   }
 }
 
 .green-background {
-  background-color: rgba(60, 188, 152, 0.1);
+  background-color: rgba(0, 190, 140, 0.1);
 
   &:hover {
-    background-color: rgba(60, 188, 152, 0.3) !important;
+    background-color: rgba(0, 190, 140, 0.3) !important;
   }
 }
 
@@ -53,7 +53,7 @@
     background: none !important;
     border: none !important;
     border-radius: 0;
-    border-bottom: 1px solid white !important;
+    border-bottom: 1px solid $accent !important;
     box-shadow: none !important;
     opacity: 0.65;
     overflow: hidden;
@@ -62,7 +62,6 @@
 
     &:focus {
       box-shadow: none !important;
-      border-bottom: 2px solid $accent !important;
       opacity: 1.00;
     }
 
@@ -172,6 +171,11 @@
   }
 }
 
+.padd-fix {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .empty {
   color: $grey;
   text-align: center;
@@ -192,12 +196,12 @@
 
 // -------------------- Styles --------------------
 html, body {
-  background-color: $dark-grey;
+  background-color: $dark;
   font-family: 'Roboto', sans-serif;
 }
 
 .navbar {
-  background-color: $dark;
+  background-color: $dark-grey;
 
   .logo {
     line-height: 50px;
@@ -227,24 +231,24 @@ html, body {
 }
 
 .panel-group {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   background-color: $dark-grey;
-  border-radius: 2px;
 
   .panel-header {
     color: white;
-    padding: 20px 20px 0;
+    border-bottom: 1px solid $dark;
+    padding: 15px 20px 10px;
+    text-transform: uppercase;
 
     p {
       color: $accent;
-      display: inline-block;
-      font-size: 16px;
+      font-size: 14px;
       margin: 0;
     }
   }
 
   .panel-content {
-    padding: 10px 20px 20px;
+    padding: 15px;
 
     button {
       float: right;
@@ -252,7 +256,7 @@ html, body {
   }
 
   .sidebar {
-    padding: 10px 0 0;
+    padding: 0;
 
     a {
       color: white;
@@ -263,8 +267,7 @@ html, body {
     }
 
     .sidebar-row {
-      border-radius: 2px;
-      border-top: 1px solid $dark-grey;
+      border-bottom: 1px solid $dark;
       margin: 0;
       padding: 5px 5px;
 
@@ -274,8 +277,6 @@ html, body {
     }
 
     .room-row {
-      border-top: 1px solid $dark;
-
       &:hover {
         background-color: $dark-grey-hover;
       }
@@ -285,7 +286,7 @@ html, body {
       }
 
       .room-name {
-        line-height: 34px;
+        line-height: 35px;
       }
     }
   }
@@ -310,16 +311,10 @@ html, body {
       margin-bottom: -1px;
     }
   }
-
-  .tab-pane {
-    .empty {
-      margin: 15px 0 0;
-    }
-  }
 }
 
 .content {
-  margin-top: 55px;
+  margin-top: 60px;
 
   .center-content {
     padding: 0;
@@ -362,5 +357,22 @@ html, body {
 
   .left-sidebar::-webkit-scrollbar {
     display: none;
+  }
+}
+
+.profile {
+  .profile-img {
+    background-size: cover;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px
+  }
+
+  .tab-pane {
+    margin-top: 15px;
+
+    .empty {
+      margin-bottom: 0;
+    }
   }
 }
