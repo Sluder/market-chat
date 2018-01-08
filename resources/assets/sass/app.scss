@@ -50,20 +50,18 @@
   }
 
   .form-control {
-    color: $grey;
+    color: white;
     background: none !important;
     border: none !important;
     border-radius: 0;
-    border-bottom: 1px solid $accent !important;
+    border-bottom: 1px solid $grey !important;
     box-shadow: none !important;
-    opacity: 0.65;
     overflow: hidden;
     height: 34px;
     resize: none;
 
     &:focus {
-      color: white;
-      border-bottom: 2px solid $accent !important;
+      border-bottom: 1px solid $accent !important;
       box-shadow: none !important;
       opacity: 1.00;
     }
