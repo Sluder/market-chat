@@ -65,7 +65,10 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- Personal information --}}
-                                                <p class="subheader">Profile Info</p>
+                                                <div class="subheader">
+                                                    Profile Info
+                                                    <p>Your email is hidden from the public</p>
+                                                </div>
                                                 @if (session()->has('profile_message'))
                                                     <div class="alert green-background green">
                                                         {{ session()->get('profile_message') }}
@@ -134,7 +137,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p class="subheader">Information</p>
+                                                <div class="subheader">
+                                                    Password
+                                                    <p>Contain at least one uppercase/lowercase letters, and at least 5 characters in length</p>
+                                                </div>
                                                 @if (session()->has('password_message'))
                                                     <div class="alert green-background green">
                                                         {{ session()->get('password_message') }}
@@ -170,7 +176,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <button class="btn" id="new_password_btn">Update</button>
+                                                            <button class="btn" id="new_password_btn">Change</button>
                                                         </div>
                                                     </div>
                                                 </form>

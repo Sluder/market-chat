@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Mail\RegisterEmail;
 use App\Models\User;
@@ -67,14 +68,14 @@ class AccountController extends Controller
     /**
      * Update user password
      */
-    public function updatePassword()
+    public function updatePassword(PasswordRequest $request)
     {
         $user = Auth::user();
 
-        if (request('current_password') && request('new_password')) {
-            if (Hash::check(request('current_password'), $user->password)) {
+        if ($request->get('current_password') && $request->get('new_password')) {
+            if (Hash::check($request->get('current_password'), $user->password)) {
                 $user->update([
-                    'password' => Hash::make(request('new_password'))
+                    'password' => Hash::make($request->get('new_password'))
                 ]);
                 return redirect()->back()->with(['password_message' => 'Your password was successfully updated']);
 

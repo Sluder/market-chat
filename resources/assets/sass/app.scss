@@ -204,6 +204,7 @@ html, body {
 
 .navbar {
   background-color: $dark-grey;
+  border-bottom: 10px solid $dark;
 
   .logo {
     line-height: 50px;
@@ -384,4 +385,11 @@ html, body {
   color: $accent;
   font-size: 14px;
   text-transform: uppercase;
+
+  p {
+    color: $grey;
+    font-size: 12px;
+    margin-top: 5px;
+    text-transform: none;
+  }
 }
