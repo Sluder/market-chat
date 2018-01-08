@@ -12,7 +12,7 @@
             <div class="row">
                 @include('partials.left-sidebar')
 
-                <div class="col-md-6 col-md-offset-3 center-content">
+                <div class="col-md-9 col-md-offset-3 padd-fix">
                     <div class="panel-group room-panel">
                         <div class="panel-header">
                             <p>{{ $room->name }}</p>
@@ -71,8 +71,6 @@
                         </div>
                     </div>
                 </div>
-
-                @include('partials.right-sidebar')
             </div>
         </div>
     </div>

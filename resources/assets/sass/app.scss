@@ -111,6 +111,7 @@
 
     a {
       color: white;
+      text-transform: none;
 
       &:hover {
         background-color: $dark-grey-hover;

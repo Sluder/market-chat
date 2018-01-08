@@ -3,9 +3,10 @@
   .room-panel {
     height: calc(100vh - 80px);
     min-height: calc(100vh - 80px);
+    margin-left: -10px;
 
     .panel-header {
-      padding-bottom: 7px;
+      text-transform: none;
     }
 
     .messages {
@@ -29,7 +30,7 @@
         }
 
         .message-time {
-          color: $grey;
+          color: #464646;
           font-size: 12px;
           display: inline-block;
           margin-left: 10px;
