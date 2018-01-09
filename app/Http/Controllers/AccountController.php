@@ -18,7 +18,7 @@ class AccountController extends Controller
      */
     public function register(UserRequest $request)
     {
-        // Check is email & username are not in use
+        // Check if email & username are not in use
         if ($this->userExists($request->get('email'))->getData()) {
             return redirect()->back()->withInput()->withErrors(['email' => 'This email is already in use']);
 
@@ -72,19 +72,14 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
-        if ($request->get('current_password') && $request->get('new_password')) {
-            if (Hash::check($request->get('current_password'), $user->password)) {
-                $user->update([
-                    'password' => Hash::make($request->get('new_password'))
-                ]);
-                return redirect()->back()->with(['password_message' => 'Your password was successfully updated']);
-
-            } else {
-                return redirect()->back()->withInput()->withErrors(['password' => 'Your current password is incorrect']);
-            }
+        if (Hash::check($request->get('current_password'), $user->password)) {
+            $user->update([
+                'password' => Hash::make($request->get('new_password'))
+            ]);
+            return redirect()->back()->with(['password_message' => 'Your password was successfully updated']);
         }
 
-        return redirect()->back()->withErrors(['password' => 'Your current and new password are required']);
+        return redirect()->back()->withInput()->withErrors(['password' => 'Your current password is incorrect']);
     }
 
     /**

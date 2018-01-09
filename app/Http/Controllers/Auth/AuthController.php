@@ -13,14 +13,9 @@ class AuthController extends Controller
 {
     /**
      * Login user if they exist
-     *
-     * @param LoginRequest $request
-     * @return to user home, else bad login
      */
     public function login(LoginRequest $request)
     {
-        Input::merge(array_map('trim', Input::all()));
-
         $user = User::where('username', $request->get('login'))->orWhere('email', $request->get('login'))->first();
 
         if ($user) {
@@ -36,8 +31,6 @@ class AuthController extends Controller
 
     /**
      * Logout authenticated user
-     *
-     * @return back to login view
      */
     public function logout()
     {

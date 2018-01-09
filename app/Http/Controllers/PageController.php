@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PageController extends Controller
 {
@@ -12,9 +12,6 @@ class PageController extends Controller
      */
     public function showIndex()
     {
-        if (Auth::check()) {
-            return view('pages.home');
-        }
         return view('pages.index');
     }
 
@@ -39,9 +36,14 @@ class PageController extends Controller
      */
     public function profile($username)
     {
-        $user = User::whereUsername($username)->first();
+        try {
+            $user = User::whereUsername($username)->firstOrFail();
 
-        return view('pages.profile', compact('user'));
+            return view('pages.profile', compact('user'));
+
+        } catch (ModelNotFoundException $e) {
+            return view('pages.errors.not-found')->with(['message' => 'User with username ' . $username . ' was not found']);
+        }
     }
 
 }
